@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace XamarinAuthTest
@@ -13,7 +13,27 @@ namespace XamarinAuthTest
         {
             InitializeComponent();
 
-            MainPage = new XamarinAuthTest.MainPage();
+            MainPage = new NavigationPage(new MainPage());
+        }
+
+        public static Action HideLoginView
+        {
+            get
+            {
+                return new Action(() => App.Current.MainPage.Navigation.PopModalAsync());
+            }
+        }
+
+        public async static Task NavigateToProfile(string message, string role)
+        {
+            if (role == "Management")
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new Gestor());
+            }
+            else
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new Profile(message));
+            }            
         }
 
         protected override void OnStart()

@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace XamarinAuthTest
 {
-    public partial class MainPage : ContentPage
+    public partial class Gestor : ContentPage
     {
-        public MainPage()
+        public Gestor()
         {
             InitializeComponent();
-
-            this.btnLogar.Clicked += async (sender, e) =>
-            {
-                await Navigation.PushAsync(new Login());
-            };
         }
     }
 }
